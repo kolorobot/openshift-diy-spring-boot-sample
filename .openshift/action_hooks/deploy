@@ -33,6 +33,7 @@ fi
 
 cd $OPENSHIFT_REPO_DIR
 export M2=$OPENSHIFT_DATA_DIR/apache-maven-3.2.3/bin
+export MAVEN_OPTS="-Xms384m -Xmx412m"
 export JAVA_HOME=$OPENSHIFT_DATA_DIR/jdk1.8.0_20
 export PATH=$JAVA_HOME/bin:$M2:$PATH
 

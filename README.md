@@ -80,4 +80,4 @@ And when you observe the build result, the application starts a bit faster on Je
 
 # Under the hood
 
-@TODO Link to the post
+http://blog.codeleak.pl/2014/10/spring-boot-java-8-tomcat-8-on-openshift.html

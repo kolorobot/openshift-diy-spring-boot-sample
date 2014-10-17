@@ -5,8 +5,8 @@ import org.junit.Test;
 
 public class ApplicationTests {
 
-	@Test
-	public void test() {
+    @Test
+    public void test() {
         Assert.assertTrue(true);
     }
 

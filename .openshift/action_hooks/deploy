@@ -3,38 +3,28 @@
 set -x
 
 if [ ! -d $OPENSHIFT_DATA_DIR/m2/repository ]
-        then
-                cd $OPENSHIFT_DATA_DIR
-				mkdir m2/repository                
+then
+    mkdir -p $OPENSHIFT_DATA_DIR/m2/repository
 fi
 
 if [ ! -d $OPENSHIFT_DATA_DIR/logs ]
-        then
-                cd $OPENSHIFT_DATA_DIR
-				mkdir logs
-fi
-
-if [ ! -d $OPENSHIFT_DATA_DIR/jdk1.8.0_20 ]
-        then
-                cd $OPENSHIFT_DATA_DIR
-                wget http://www.java.net/download/jdk8u20/archive/b17/binaries/jdk-8u20-ea-bin-b17-linux-x64-04_jun_2014.tar.gz
-                tar xvf *.tar.gz
-                rm -f *.tar.gz
+then
+    mkdir -p $OPENSHIFT_DATA_DIR/logs
 fi
 
 if [ ! -d $OPENSHIFT_DATA_DIR/apache-maven-3.3.9 ]
-        then
-                cd $OPENSHIFT_DATA_DIR
-                wget http://mirror.cc.columbia.edu/pub/software/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
-                tar xvf *.tar.gz
-                rm -f *.tar.gz
+then
+    wget -P $OPENSHIFT_DATA_DIR http://mirror.cc.columbia.edu/pub/software/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+    tar xvf $OPENSHIFT_DATA_DIR/apache-maven*.tar.gz
+    rm -f $OPENSHIFT_DATA_DIR/apache-maven*.tar.gz
 fi
 
 
-cd $OPENSHIFT_REPO_DIR
+export JAVA_HOME=/etc/alternatives/java_sdk_1.8.0
 export M2=$OPENSHIFT_DATA_DIR/apache-maven-3.3.9/bin
 export MAVEN_OPTS="-Xms384m -Xmx412m"
-export JAVA_HOME=$OPENSHIFT_DATA_DIR/jdk1.8.0_20
 export PATH=$JAVA_HOME/bin:$M2:$PATH
+
+cd $OPENSHIFT_REPO_DIR
 
 mvn -s settings.xml clean install

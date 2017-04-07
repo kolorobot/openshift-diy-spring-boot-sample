@@ -33,7 +33,7 @@ Commit the changes:
 # Step 4: Pull Source code from GitHub
 
     git remote add upstream https://github.com/kolorobot/openshift-diy-spring-boot-sample.git
-    git pull -s recursive -X theirs upstream master
+    git pull -s recursive -X theirs upstream master --allow-unrelated-histories
 
 # Step 5: Push changes
 

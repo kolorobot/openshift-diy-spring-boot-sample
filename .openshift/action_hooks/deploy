@@ -14,7 +14,7 @@ fi
 
 if [ ! -d $OPENSHIFT_DATA_DIR/apache-maven-3.3.9 ]
 then
-    wget -P $OPENSHIFT_DATA_DIR http://mirror.cc.columbia.edu/pub/software/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+    wget -P $OPENSHIFT_DATA_DIR http://mirrors.rackhosting.com/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
     tar xvf $OPENSHIFT_DATA_DIR/apache-maven*.tar.gz --directory $OPENSHIFT_DATA_DIR
     rm -f $OPENSHIFT_DATA_DIR/apache-maven*.tar.gz
 fi
